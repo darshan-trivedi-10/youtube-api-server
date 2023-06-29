@@ -1,0 +1,18 @@
+{
+  "name": "youtube-api-project",
+  "version": "1.0.0",
+  "description": "youtube api To make an API to fetch latest videos sorted in reverse chronological order of their publishing date-time from YouTube for a given tag ",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npx nodemon src/index.js"
+  },
+  "keywords": [
+    "youtube-api"
+  ],
+  "author": "darshan trivedi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
