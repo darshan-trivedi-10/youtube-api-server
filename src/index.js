@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', apiRouter);
 
-
 app.listen(PORT, async () => {
     console.log("Server Started :) ");
     await connect();

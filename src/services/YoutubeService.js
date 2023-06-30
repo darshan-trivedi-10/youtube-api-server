@@ -1,4 +1,6 @@
 import axios from "axios";
+import Video from '../model/videoSchema.js'
+
 import { API_KEY } from "../config/config.js";
 
 const baseURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&';
@@ -29,7 +31,8 @@ const startFetchingVideos = async (keyword) => {
 // to store video in db
 function storeVideo(videos) {
 
-    videos.forEach(video => {
+    videos.forEach(async video => {
+        console.log(video);
         const videoData = {
             etag: video.etag,
             videoId: video.id.videoId,
@@ -58,7 +61,18 @@ function storeVideo(videos) {
             publishTime: video.snippet.publishTime,
         };
 
+        console.log("\n\n\n");
         console.log(videoData);
+
+        try {
+            const newVideo = new Video(videoData);
+            await newVideo.save();
+            console.log("Video data saved");
+        } catch (error) {
+            console.log("Something went wrong while storing video data");
+            console.log(error);
+        }
+
     });
 
 }
