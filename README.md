@@ -1,6 +1,7 @@
 #  youtube-api-server
 
 ## Youtube API
+- BASE URL : localhost:5000/api/v1
 
 ### Start Fetching Videos
 - Start fetching YouTube videos based on a keyword.

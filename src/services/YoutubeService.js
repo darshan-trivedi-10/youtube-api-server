@@ -7,6 +7,10 @@ const baseURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&';
 
 let id;
 
+function changeAPIKey() {
+    // Logic To Add API Key
+}
+
 const startFetchingVideos = async (keyword) => {
     try {
         let startDate = new Date(); // Today's date
@@ -14,11 +18,19 @@ const startFetchingVideos = async (keyword) => {
         id = setInterval(async () => {
             let query = `type=video&order=date&type=video&maxResults=10&q=${keyword}&key=${API_KEY}&publishedAfter=${getFormattedDate(endDate)}&publishedBefore=${getFormattedDate(startDate)}`;
             console.log(startDate, " ", endDate);
-            const response = await axios.get(baseURL + query);
-            const { data } = response;
-            storeVideo(data.items);
-            startDate = endDate;
-            endDate = getPreviousDay(startDate);
+            try {
+                const response = await axios.get(baseURL + query);
+                const { data } = response;
+                storeVideo(data.items);
+                startDate = endDate;
+                endDate = getPreviousDay(startDate);
+            } catch (error) {
+                console.log(error);
+                if (error.response.status == 403) {
+                    changeAPIKey();
+                }
+            }
+
         }, 10000);
 
         return true;
