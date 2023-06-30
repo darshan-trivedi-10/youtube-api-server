@@ -17,10 +17,12 @@ const videoSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     description: {
         type: String,
+        index: true
     },
     thumbnails: {
         default: {

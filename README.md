@@ -23,7 +23,7 @@
 ### Stop Fetching Videos
 - Stop fetching YouTube videos.
 
-- URL: /youtube/stop
+- URL: `/youtube/stop`
 - Method: POST
 - Response:
     - Status: 200 OK if the operation is successful.
@@ -34,3 +34,29 @@
     Response:
     Status: 200 OK
     ```
+
+## Search API
+
+### Fetches videos from the database with pagination.
+
+- URL : `/videos/search/:page`
+- Method : GET
+- URL Parameters :
+    - `page` (optional) : The page number to retrieve (default: 1).
+- Request Example: `GET /videos/search/2`
+- Response Example:
+    - Returns a JSON array of video objects based on the specified page number.
+
+## Searches for videos in the database based on a search query
+
+- Method: GET
+- URL Parameters:
+    - None
+- Query Parameters:
+    - `q` (required): The search query string.
+    - `page` (optional):The page number to retrieve (default: 1).
+- Request Example: `GET /videos/search?q=Putin%20forum&page=2`
+- Response Example:
+    - Returns a JSON array of video objects based on the search query and pagination.
+
+
