@@ -19,7 +19,7 @@ const startFetchingVideos = async (keyword) => {
             storeVideo(data.items);
             startDate = endDate;
             endDate = getPreviousDay(startDate);
-        }, 1000);
+        }, 10000);
 
         return true;
     } catch (error) {
