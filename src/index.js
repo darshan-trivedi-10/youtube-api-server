@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors'
 
 import { connect } from './config/config.js';
 import apiRouter from './router/index.js';
@@ -10,6 +11,7 @@ const PORT = 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use('/api', apiRouter);
 
