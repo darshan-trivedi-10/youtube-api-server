@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -14,7 +15,20 @@ dotenv.config({ path: envPath });
 
 // Now you can access the environment variables
 const API_KEY = process.env.API_KEY;
+const DB_URL = process.env.DB_LINK;
+
+
+const connect = async () => {
+    try {
+        await mongoose.connect(DB_URL);
+        console.log("DB Connected");
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 
 export {
-    API_KEY
+    API_KEY, connect
 }

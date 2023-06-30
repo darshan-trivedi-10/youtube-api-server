@@ -17,9 +17,12 @@ const startFetchingVideos = async (keyword) => {
             storeVideo(data.items);
             startDate = endDate;
             endDate = getPreviousDay(startDate);
-        }, 20000);
+        }, 1000);
+
+        return true;
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
@@ -55,15 +58,20 @@ function storeVideo(videos) {
             publishTime: video.snippet.publishTime,
         };
 
+        console.log(videoData);
     });
 
 }
 
 
 function stopFetchingVideos() {
-    setTimeout(() => {
+    try {
         clearInterval(id);
-    }, 1000);
+        return true;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 // Utility function to get the previous day's date
@@ -80,8 +88,5 @@ function getFormattedDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}T00:00:00Z`;
 }
-
-startFetchingVideos("News");
-stopFetchingVideos();
 
 export { startFetchingVideos, stopFetchingVideos };
