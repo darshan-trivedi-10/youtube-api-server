@@ -73,9 +73,6 @@ function storeVideo(videos) {
             publishTime: video.snippet.publishTime,
         };
 
-        console.log("\n\n\n");
-        console.log(videoData);
-
         try {
             const newVideo = new Video(videoData);
             await newVideo.save();

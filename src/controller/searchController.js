@@ -7,7 +7,7 @@ class SearchController {
         try {
             const page = req.params.page || 1;
 
-            const pageSize = 15;
+            const pageSize = 10;
             const skipCount = (page - 1) * pageSize;
             if (skipCount < 0) {
                 skipCount = 0;
@@ -76,10 +76,13 @@ class SearchController {
                 },
             ]);
 
-            res.json({
-                videos,
-                currentPage: page,
-            });
+            return res.status(StatusCodes.OK).json({
+                message: "videos fetched SuccesFully",
+                data: videos,
+                success: true,
+                err: {}
+            })
+
         } catch (error) {
             console.log("Error in search Controller");
             console.log(error);
