@@ -1,5 +1,18 @@
 #  youtube-api-server
 
+## Build Step
+
+- Clone this Repository
+- Move to the project directory
+- Create a .env file in the project directory and add your MongoDB connection string to it. Open the .env file in a text editor and add the following line:
+    ```js
+    DB_LINK = <YOUR_MONGODB_LINK>
+    ```
+- run `npm install`
+- run `npm start`
+
+- This will start the application and make it accessible at the specified port (usually `http://localhost:5000`).
+
 ## Youtube API
 - BASE URL : `localhost:5000/api/v1`
 
