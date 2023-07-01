@@ -20,9 +20,12 @@ const startFetchingVideos = async (keyword) => {
         let startDate = new Date(); // Today's date
         let endDate = getPreviousDay(startDate);
         id = setInterval(async () => {
+            API_KEY = await getAPIKey();
+            console.log(API_KEY);
             let query = `type=video&order=date&type=video&maxResults=10&q=${keyword}&key=${API_KEY}&publishedAfter=${getFormattedDate(endDate)}&publishedBefore=${getFormattedDate(startDate)}`;
             console.log(startDate, " ", endDate);
             try {
+                console.log(baseURL + query);
                 const response = await axios.get(baseURL + query);
                 const { data } = response;
                 storeVideo(data.items);

@@ -11,7 +11,6 @@ let keyPath = __dirname + '/key.json';
 
 // Specify the relative path to the .env file
 const envPath = path.resolve(__dirname, '../../.env');
-
 // Load the environment variables from the .env file
 dotenv.config({ path: envPath });
 
@@ -33,7 +32,6 @@ const getAPIKey = async () => {
     try {
         const data = await fs.promises.readFile(keyPath, 'utf8');
         const { lastKey, API_KEY } = JSON.parse(data);
-        console.log(API_KEY[lastKey]);
         return API_KEY[lastKey];
     } catch (error) {
         console.error('Error reading file:', error);
