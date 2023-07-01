@@ -13,6 +13,9 @@ router.post('/youtube/stop', youtubeController.stopFetchingVideos);
 // Search Router
 router.get('/videos/search/:page', searchController.fetchVideos);
 router.get('/videos/search', searchController.search);
-// api/videos/search
+
+// Key management
+router.post('/add/key', youtubeController.addKey);
+router.get('/get/keys', youtubeController.getKey);
 
 export default router;

@@ -1,14 +1,18 @@
 import axios from "axios";
 import Video from '../model/videoSchema.js'
 
-import { API_KEY } from "../config/config.js";
+import { updateKey, getAPIKey } from "../config/config.js";
 
 const baseURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&';
 
 let id;
+let API_KEY = await getAPIKey();
 
-function changeAPIKey() {
+async function changeAPIKey() {
     // Logic To Add API Key
+    await updateKey();
+    let newKey = await getAPIKey();
+    API_KEY = newKey;
 }
 
 const startFetchingVideos = async (keyword) => {
@@ -27,7 +31,7 @@ const startFetchingVideos = async (keyword) => {
             } catch (error) {
                 console.log(error);
                 if (error.response.status == 403) {
-                    changeAPIKey();
+                    await changeAPIKey();
                 }
             }
 
@@ -44,7 +48,6 @@ const startFetchingVideos = async (keyword) => {
 function storeVideo(videos) {
 
     videos.forEach(async video => {
-        console.log(video);
         const videoData = {
             etag: video.etag,
             videoId: video.id.videoId,

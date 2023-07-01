@@ -48,7 +48,7 @@
 - Response Example:
     - Returns a JSON array of video objects based on the specified page number.
 
-## Searches for videos in the database based on a search query
+### Searches for videos in the database based on a search query
 
 - Method: GET
 - URL Parameters:
@@ -60,4 +60,27 @@
 - Response Example:
     - Returns a JSON array of video objects based on the search query and pagination.
 
+## API Key Management
+### Add Key
+- Adds a new key to the key.json file.
 
+- URL: `/add/key`
+- Method: POST
+- Response:
+    - Status: 200 OK if the operation is successful.
+- Example:
+    ```js
+    POST /add/key
+    {
+        "key": "YOUR_KEY_HERE"
+    }
+    Response:
+    Status: 200 OK
+    ```
+### Get Keys
+- Retrieves all keys from the key.json file.
+
+- Method: GET
+- URL Parameters:
+    - None
+- Request Example: `GET /get/keys`
